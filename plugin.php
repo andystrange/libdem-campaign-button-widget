@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Liberal Democrat Campaign Buttons Widget
-Plugin URI: 
+Plugin URI: http://grit-oyster.co.uk/plugins
 Description: Adds a widget that displays Mark Pack's Liberal Democrat Campaign Buttons.
 Version: 1.0
 Author: Andy Strange
-Author URI: grit-oyster.co.uk/plugins
+Author URI: http://grit-oyster.co.uk/
 Author Email: web@grit-oyster.co.uk
 Text Domain: libdem-campaign-buttons-widget-locale
 Domain Path: /lang/
@@ -13,7 +13,7 @@ Network: false
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Copyright 2013 TODO (email@domain.com)
+Copyright 2013 Grit & Oyster (web@grit-oyster.co.uk)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
@@ -29,7 +29,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-// TODO: change 'Widget_Name' to the name of your plugin
 class LibDem_Campaign_Buttons_Widget extends WP_Widget {
 
 	/*--------------------------------------------------*/
@@ -49,24 +48,14 @@ class LibDem_Campaign_Buttons_Widget extends WP_Widget {
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
 		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
-		// TODO:	update classname and description
-		// TODO:	replace 'widget-name-locale' to be named more plugin specific. Other instances exist throughout the code, too.
 		parent::__construct(
 			'libdem-campaign-buttons-widget-id',
 			__( 'Lib Dem Campaign Buttons Widget', 'libdem-campaign-buttons-widget-locale' ),
 			array(
 				'classname'		=>	'libdem-campaign-buttons-widget-class',
-				'description'	=>	__( 'Short description of the widget goes here.', 'libdem-campaign-buttons-widget-locale' )
+				'description'	=>	__( 'Adds a widget that displays Mark Pack&#39;s Liberal Democrat Campaign Buttons.', 'libdem-campaign-buttons-widget-locale' )
 			)
 		);
-
-		// Register admin styles and scripts
-		add_action( 'admin_print_styles', array( $this, 'register_admin_styles' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
-
-		// Register site styles and scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_widget_scripts' ) );
 
 	} // end constructor
 
@@ -140,7 +129,6 @@ class LibDem_Campaign_Buttons_Widget extends WP_Widget {
 		$display_title = $instance['title'];
 		$display_style = $instance['style'];
 
-
 		// Display the admin form
 		include( plugin_dir_path(__FILE__) . 'views/admin.php' );
 
@@ -155,7 +143,6 @@ class LibDem_Campaign_Buttons_Widget extends WP_Widget {
 	 */
 	public function widget_textdomain() {
 
-		// TODO be sure to change 'widget-name' to the name of *your* plugin
 		load_plugin_textdomain( 'libdem-campaign-buttons-widget-locale', false, plugin_dir_path( __FILE__ ) . 'lang/' );
 
 	} // end widget_textdomain
@@ -179,47 +166,6 @@ class LibDem_Campaign_Buttons_Widget extends WP_Widget {
 	} // end deactivate
 
 	/**
-	 * Registers and enqueues admin-specific styles.
-	 */
-	public function register_admin_styles() {
-
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'libdem-campaign-buttons-widget-admin-styles', plugins_url( 'widget-name/css/admin.css' ) );
-
-	} // end register_admin_styles
-
-	/**
-	 * Registers and enqueues admin-specific JavaScript.
-	 */
-	public function register_admin_scripts() {
-
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'libdem-campaign-buttons-widget-script', plugins_url( 'widget-name/js/admin.js' ), array('jquery') );
-
-	} // end register_admin_scripts
-
-	/**
-	 * Registers and enqueues widget-specific styles.
-	 */
-	public function register_widget_styles() {
-
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_style( 'libdem-campaign-buttons-widget-styles', plugins_url( 'widget-name/css/widget.css' ) );
-
-	} // end register_widget_styles
-
-	/**
-	 * Registers and enqueues widget-specific scripts.
-	 */
-	public function register_widget_scripts() {
-
-		// TODO:	Change 'widget-name' to the name of your plugin
-		wp_enqueue_script( 'libdem-campaign-buttons-widget-script', plugins_url( 'widget-name/js/widget.js' ), array('jquery') );
-
-	} // end register_widget_scripts
-
-
-	/**
 	 * 
 	 */
 	public function get_display_styles() {
@@ -237,11 +183,6 @@ class LibDem_Campaign_Buttons_Widget extends WP_Widget {
 
 	} // end get_display_styles
 
-
-
-
-
 } // end class
 
-// TODO:	Remember to change 'Widget_Name' to match the class name definition
 add_action( 'widgets_init', create_function( '', 'register_widget("LibDem_Campaign_Buttons_Widget");' ) );
