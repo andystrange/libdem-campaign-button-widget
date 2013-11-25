@@ -86,7 +86,19 @@ class LibDem_Campaign_Buttons_Widget extends WP_Widget {
 
 		echo $before_widget;
 
-		// TODO:	Here is where you manipulate your widget's values based on their input fields
+		$title = $instance['title'];
+
+		$style = $instance['style'];
+
+		if ( $style == 'default') {
+
+			$style_string = '';
+	
+		} else {
+
+			$style_string = '?style=' . $style;
+
+		}
 
 		include( plugin_dir_path( __FILE__ ) . 'views/widget.php' );
 
@@ -104,7 +116,8 @@ class LibDem_Campaign_Buttons_Widget extends WP_Widget {
 
 		$instance = $old_instance;
 
-		// TODO:	Here is where you update your widget's old values with the new, incoming values
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['style'] = $new_instance['style'];
 
 		return $instance;
 
@@ -117,12 +130,16 @@ class LibDem_Campaign_Buttons_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-    	// TODO:	Define default values for your variables
-		$instance = wp_parse_args(
-			(array) $instance
+    	$defaults = array(
+			'title' => '',
+			'style' => 'default'
 		);
+				
+		$instance = wp_parse_args( $instance, $defaults );
 
-		// TODO:	Store the values of the widget in their own variable
+		$display_title = $instance['title'];
+		$display_style = $instance['style'];
+
 
 		// Display the admin form
 		include( plugin_dir_path(__FILE__) . 'views/admin.php' );
@@ -200,6 +217,29 @@ class LibDem_Campaign_Buttons_Widget extends WP_Widget {
 		wp_enqueue_script( 'libdem-campaign-buttons-widget-script', plugins_url( 'widget-name/js/widget.js' ), array('jquery') );
 
 	} // end register_widget_scripts
+
+
+	/**
+	 * 
+	 */
+	public function get_display_styles() {
+
+		$styles = array(
+			'default',
+			'dark',
+			'gold',
+			'green',
+			'grey',
+			'aqua',
+			'text' );
+
+	return $styles;
+
+	} // end get_display_styles
+
+
+
+
 
 } // end class
 

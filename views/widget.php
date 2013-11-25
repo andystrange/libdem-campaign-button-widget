@@ -1,1 +1,8 @@
-<!-- This file is used to markup the public-facing widget. -->
+<?php 
+		if ( ! empty( $title ) )
+			echo $args['before_title'] . $title . $args['after_title'];
+?>
+
+<script
+type='text/javascript'
+src='http://libdemwidget.markpack.org.uk<?php echo $style_string; ?>'></script>
