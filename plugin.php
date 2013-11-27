@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Liberal Democrat Campaign Buttons Widget
-Plugin URI: http://grit-oyster.co.uk/plugins
+Plugin URI: http://grit-oyster.co.uk/liberal-democrats/campaign-buttons-widget
 Description: Adds a widget that displays Mark Pack's Liberal Democrat Campaign Buttons.
 Version: 1.0
-Author: Andy Strange
+Author: Grit &amp; Oyster
 Author URI: http://grit-oyster.co.uk/
 Author Email: web@grit-oyster.co.uk
 Text Domain: libdem-campaign-buttons-widget-locale
