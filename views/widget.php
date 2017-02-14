@@ -3,4 +3,4 @@
 		echo $args['before_title'] . $title . $args['after_title']; ?>
 <script
 type='text/javascript'
-src='http://libdemwidget.markpack.org.uk<?php echo $style_string; ?>'></script>
+src='//libdemwidget.markpack.org.uk<?php echo $style_string; ?>'></script>
